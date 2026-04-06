@@ -7,8 +7,33 @@ metaLinks:
 
 # Post-Quantum Secure
 
-Autonomi is designed so the network's connections and identities are protected by post-quantum cryptography from the very first byte. The transport layer uses ML-KEM-768 for key exchange and ML-DSA-65 for signatures, with no classical fallback.
+Autonomi is designed for a post-quantum threat model, but it does not use the same cryptography for everything. Stored data is protected by self-encryption on your own device, while node identity and network connections use explicitly post-quantum cryptography.
 
-This is separate from how content itself is protected. Files are self-encrypted on your own device before upload using ChaCha20-Poly1305 with keys derived via BLAKE3. In other words, stored data is client-side encrypted, while the network that moves it is secured with post-quantum cryptography.
+## What this means
 
-Together, these layers let nodes verify who they are talking to, establish secure connections, and move data around the network without exposing readable content. Your data is encrypted before it leaves your device, and the network connections that carry it are built for a quantum-era threat model.
+Post-quantum security means the network does not rely only on classical public-key cryptography for node identity and connection security. That matters because large quantum computers would weaken some cryptographic systems that are still used widely on today's Internet.
+
+For a reader or user, the important distinction is simple:
+
+- your files are protected by self-encryption before they leave your device
+- the connections between clients and nodes are protected by post-quantum cryptography
+
+These are separate layers, and Autonomi uses both as part of the same broader security model.
+
+## Why Autonomi separates these layers
+
+Stored data and live network connections face different risks, so they are protected differently. Self-encryption keeps uploaded content unreadable to the network itself using modern symmetric encryption and hashing. Post-quantum transport security protects node identity and the secure connections used to move data around.
+
+That means the network can verify who is participating and establish secure connections without exposing readable content in transit or at rest.
+
+## Under the hood
+
+Autonomi's transport layer uses `ML-KEM-768` for key exchange and `ML-DSA-65` for signatures, with no classical fallback.
+
+Content protection follows a different path. Files are self-encrypted on the client using `ChaCha20-Poly1305`, with keys and addresses derived using `BLAKE3`. These are not the same as the network's explicit post-quantum identity and transport algorithms, but they are also not vulnerable in the same way as classical public-key cryptography.
+
+## Related pages
+
+- [Everything's Encrypted](everythings-encrypted.md)
+- [Self-Encryption](../../how-it-works/encryption-and-authentication/self-encryption.md)
+- [Post-Quantum Identity & Credentials](../../how-it-works/encryption-and-authentication/multisig-credentials.md)
