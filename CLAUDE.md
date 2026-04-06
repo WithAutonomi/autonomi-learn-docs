@@ -105,6 +105,7 @@ All documentation work follows `source audit -> draft -> verify`.
 - Be clear without sounding academic
 - Be confident without sounding promotional
 - Use second person when it helps the reader, but neutral explanatory prose is fine for concept pages
+- Avoid meta audience framing such as `for readers`, `for users`, or `the important thing to understand is`. When explaining what something means in practice, prefer direct phrasing such as `For you, that means:`
 - Explain why before how
 - Lead with the product, concept, or reader outcome, not with repo names or implementation names
 - Avoid time-relative wording such as `current`, `now`, `currently`, and `at present` unless the page is explicitly comparing versions

@@ -13,12 +13,12 @@ Autonomi is designed for a post-quantum threat model, but it does not use the sa
 
 Post-quantum security means the network does not rely only on classical public-key cryptography for node identity and connection security. That matters because large quantum computers would weaken some cryptographic systems that are still used widely on today's Internet.
 
-For a reader or user, the important distinction is simple:
+For you, that means:
 
-- your files are protected by self-encryption before they leave your device
-- the connections between clients and nodes are protected by post-quantum cryptography
+1. Your files are protected by self-encryption before they leave your device.
+2. The connections between clients and nodes are protected by post-quantum cryptography.
 
-These are separate layers, and Autonomi uses both as part of the same broader security model.
+This means Autonomi is designed to protect your data against quantum-era threats, both at rest and while it moves across the network.
 
 ## Why Autonomi separates these layers
 
