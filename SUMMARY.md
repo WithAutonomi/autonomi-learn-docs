@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Autonomi Docs](README.md)
+* [Autonomi Docs](index.md)
 
 ## Introduction
 
