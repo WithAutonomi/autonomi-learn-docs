@@ -5,26 +5,29 @@ metaLinks:
       https://app.gitbook.com/s/T1VY0u5KuOsTpycHpSka/how-it-works/encryption-and-authentication/multisig-credentials
 ---
 
-# Multisig Credentials
+# Post-Quantum Identity & Credentials
 
-Boneh-Lynn-Shacham Distributed Key Generation (BLS-DKG) is used to help users handle their authentication credentials so they don't automatically lose their data if they lose their key.
+Autonomi 2.0 uses ML-DSA-65 (NIST FIPS 204) post-quantum digital signatures for all identity and authentication, with ML-KEM-768 (NIST FIPS 203) for key exchange — both at NIST Level 3 security. Each user's identity is based on a cryptographic key pair — there are no usernames, passwords, or central authentication servers.
 
-Credentials are thus extremely important, but credential loss can be a serious problem on decentralized networks where there is no central authority to help recover or reset forgotten passwords. The temptation may be to choose simple credentials that are easy to remember, but these will likely be insecure (easily guessed or cracked) and prone to collisions—other people may choose the same ones and inadvertently stumble upon the user's private information.
+Post-quantum keys are larger than classical keys — this is the cost of quantum resistance:
 
-Autonomi requires _at least_ two separate credentials, generally referred to as 'access keys', with the option to add more. In combination, these access keys have sufficient entropy (randomness) to make collisions vanishingly unlikely.
+- ML-DSA-65 public key: 1,952 bytes (vs ~32 bytes for Ed25519)
+- ML-DSA-65 signature: 3,309 bytes (vs ~64 bytes for Ed25519)
+- ML-KEM-768 public key: 1,184 bytes
 
-Onboarding for the first time requires the user to choose a password (the first access key) from which a second access key is generated in the form of a passphrase (12 random words with a checksum), which the user writes down, perhaps keeping copies in a few safe places. \
-\
-With these two access keys, we have _something you know_ (the password), and _something you have_ (the passphrase), and in combination, we can generate a suitable amount of entropy to avoid collisions. This is the minimum requirement for creating your data store on the Network.
+These sizes affect handshake overhead (~7.5KB vs ~228 bytes for classical TLS) but do not impact data throughput once a connection is established. There is no classical cryptographic fallback.
 
-The user may also choose to create a third access key, a device key, on a trusted smartphone or computer, which is where BLS-DKG comes in, enabling a 2-of-3 key scheme, or even further to any k-of-n!
+A user's secret key is the root of their identity on the network. From a single master secret key, unlimited child keys can be derived using HKDF (HMAC-based Key Derivation Function). This enables:
 
-<figure><img src="https://lh7-us.googleusercontent.com/C9l5S6tZQSTlA7Bwox40KCYQG1XRRJok8TcjWbIv8cQ6HzTYoc2p4ApLCC3yKjoODOPJzaS1-Gd-xedQIyIns_H4TKkw5qiYdLfWYXV7uyvm8UkwzTHLAH1gqWY1U9bwTNtMKl262EtH" alt=""><figcaption></figcaption></figure>
+- **Separate keys for different apps or contexts** — logical separation without managing unrelated keys
+- **Delegation** — derive a child key for a specific purpose, share it without exposing the master
+- **Hierarchical access control** — organise data access through key hierarchies
+- **Per-application data organisation** — each derived key has its own address space on the network
 
-Now instead of requiring the passphrase, on this trusted device the user can just use the password and the device key—_something you have_—maybe utilising some inbuilt biometrics too, for an element of _something you are_.
+Credentials are extremely important, but credential loss can be a serious problem on decentralized networks where there is no central authority to help recover or reset forgotten passwords.
 
-Additional access keys can be created to provide more flexibility and resilience. A backup passphrase is one example, and additional devices can be set up too. Then if the user forgets the password or loses a device, a combination of another device and or passphrase will allow the password to be reset.
+**Key Management Best Practices:**
 
-In this way, Autonomi caters for people with security needs ranging from the everyday to the extreme.
+Users should securely back up their master secret key. Without it, all data derived from that key — including all child keys and their associated data — becomes permanently inaccessible. There is no recovery mechanism on a decentralised network.
 
-<br>
+For enhanced security, users may choose to split their key across multiple devices or locations, so that no single point of failure results in complete loss of access.

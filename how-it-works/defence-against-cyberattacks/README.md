@@ -19,14 +19,12 @@ Autonomi has an interlocking set of features, each covering the others’ vulner
 
 **Encryption:** All data on the Network is protected by [several layers of encryption](../encryption-and-authentication/).&#x20;
 
-[**Self-encryption**](../encryption-and-authentication/self-encryption.md)**:** Content stored on the Network is broken into chunks with each chunk encrypted using its own hash and the hashes of the two previous chunks. These chunks are stored at geographically random locations (the XOR location being the hash of the encrypted chunk) with a number of copies retained for redundancy. Without a Data Map, the chunks cannot be retrieved and decrypted.&#x20;
+[**Self-encryption**](../encryption-and-authentication/self-encryption.md)**:** Content stored on the Network is broken into chunks with each chunk encrypted using ChaCha20-Poly1305 with keys derived from its own hash and the hashes of the two previous chunks. These chunks are stored at geographically random locations (the XOR location being the hash of the encrypted chunk) with a number of copies retained for redundancy. Without a Data Map, the chunks cannot be retrieved and decrypted.
 
 [**XOR Networking**](../network-architecture/content-addressable-storage.md)**:** Randomizes the geographical distribution of the chunks. Only someone in possession of the data map (i.e. the data owner) can find the chunks and piece them together again to recreate the content. An attacker trying to fake a chunk could not do so as its hash—and therefore its address on the Network—would be different. It could not be used to create a corrupted version of the file.
 
 **Self-Authentication:** A user can create a store of data securely and anonymously without requiring any central server to mediate the login process or any trusted third party to store and manage users’ credentials.
 
-[**BLS-DKG**](#user-content-fn-1)[^1]**:** BLS cryptography allows secure authentication and multi-signature transactions.
+**Post-Quantum Cryptography:** All node identity, key exchange, and authentication uses NIST-standardised post-quantum algorithms (ML-DSA-65 for signatures, ML-KEM-768 for key exchange). This makes the network resistant to attacks from quantum computers — both current and future. There is no classical cryptographic fallback.
 
-<br>
-
-[^1]: **Boneh-Lynn-Shacham Distributed Key Generation**. A cryptographic system that authenticates the sender of a message, allows for multiple parties to quickly come to a consensus, and can enable multi-signature transactions and n-of-k credentials
+**Close Group Validation:** At upload time, payment verification includes cryptographic proof that storing nodes are genuinely members of the data's close group. This prevents nodes from fraudulently claiming to store data they don't hold.
