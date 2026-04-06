@@ -14,9 +14,9 @@ Autonomi goes a step beyond typical decentralized systems. It is a network that 
 
 Data storage on the Network use is a Decentralized Ledger Technology (DLT) that doesn't utilize blockchain, so it's able to sidestep many of the obstacles to scale inherent typical decentralized storage solutions. The bigger it gets, the more it can do.
 
-### **Quantum-Secure Encryption**&#x20;
+### **Post-Quantum Encryption**
 
-Anything stored on the Network is encrypted in a way that not even a quantum computer can break it. And it is end-to-end encrypted in transit too. This means you get all the benefits of the cloud, but without your data hitting the Internet. That also means no one can watch or track your use of the Network either.
+Anything stored on the Network is encrypted using NIST-standardised post-quantum algorithms — meaning not even a quantum computer can break it. Every connection is quantum-resistant from the very first byte, not just the application layer on top. And it is end-to-end encrypted in transit too. This means you get all the benefits of the cloud, but without your data hitting the Internet. That also means no one can watch or track your use of the Network either.
 
 ### **Commodity Devices**&#x20;
 
@@ -30,6 +30,6 @@ No tracking: thanks to its various encryption schemes, tracking and surveillance
 
 Users of the Network have sovereignty over their personal data, and can maintain and control access to it, while still making use of rich and accessible services and software.
 
-Passwords and credentials never leave the client computer when accessing and decrypting data. And users need only a single set of credentials while interacting with an unlimited number of services, businesses, identities, or contexts of use.
+Cryptographic keys replace passwords and accounts. Users need only a single secret key while interacting with an unlimited number of services, businesses, identities, or contexts of use.
 
 <br>

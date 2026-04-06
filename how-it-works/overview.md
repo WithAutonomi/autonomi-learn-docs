@@ -22,7 +22,7 @@ Each piece of data stored is looked after by a small number of nodes called a cl
 
 As nodes come and go, as devices are turned on or off, this redundant data is replicated again and shuffled to new nodes that must perform the same task.
 
-Nodes are rewarded for holding data, and offering their spare capacity for the collective good, by payment in a currency native to the network that acts as a medium of exchange for these resources, and allows the autonomous market to function. This currency is referred to as ‘network token(s)’.
+Nodes are rewarded for holding data, and offering their spare capacity for the collective good, by payment in Autonomi Network Tokens (ANT) — an ERC-20 token on the Arbitrum One network with a fixed total supply of 1.2 billion tokens. ANT acts as a medium of exchange for these resources, and allows the autonomous market to function. Every storage payment burns 1% of the ANT spent, creating deflationary pressure proportional to network usage.
 
 When someone (a person or a collective) uploads data they pay a one-time fee at point of upload and then the data is stored for the lifetime of the Network. It will always be free for the owner to access and download, it is perpetual data.
 

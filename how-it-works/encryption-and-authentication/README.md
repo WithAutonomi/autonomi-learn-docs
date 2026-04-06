@@ -18,9 +18,11 @@ The API for upload by default self-encrypts all files.
 {% hint style="info" %}
 #### Keeping it Simple
 
-All content on Autonomi is encrypted by default. When content is stored on the Network it is first broken into chunks, hashed and then encrypted and these chunks are themselves encrypted using the hash of another chunk from the same file. This is ‘self-encryption’—a method patented by MaidSafe but now open-sourced. When content is made public, its containing folder is decrypted, meaning anyone can reassemble the chunks.
+All content on Autonomi is encrypted by default. When content is stored on the Network it is first broken into chunks, hashed and then encrypted and these chunks are themselves encrypted using the hash of another chunk from the same file. This is ‘self-encryption’—a method originally patented by MaidSafe but now open-sourced. The encryption uses ChaCha20-Poly1305 for symmetric encryption and BLAKE3 for hashing. When content is made public, its containing folder is decrypted, meaning anyone can reassemble the chunks.
 {% endhint %}
 
-At the network level, the Autonomi uses the TCP, UTP and µTP protocols and all the data moved by these protocols is encrypted from 'bit 1'.&#x20;
+At the network level, Autonomi uses the QUIC protocol (built on UDP) and all data moved by this protocol is encrypted from 'bit 1', using post-quantum cryptography. The TLS 1.3 handshake integrated into QUIC uses ML-KEM-768 for key exchange and ML-DSA-65 for digital signatures — both NIST-standardised post-quantum algorithms. This means connections are quantum-resistant from before any application data is exchanged.
 
-So communications between the Network and the user are always encrypted, never in plain text. Note that any node on the Network can be used as a bootstrap server so long as its IP address is added to the configuration file of the joining node. It does not have to be one provided by MaidSafe.
+So communications between the Network and the user are always encrypted, never in plain text. No classical cryptographic fallback is used — Autonomi 2.0 is 100% post-quantum at the transport layer.
+
+Note that any node on the Network can be used as a bootstrap server so long as its IP address is added to the configuration file of the joining node. It does not have to be one provided by MaidSafe.
