@@ -7,7 +7,7 @@ metaLinks:
 
 # Gas Fee
 
-Autonomi will launch with an ERC standard network token ($AUTONOMI) utilizing smart contracts for token releases and batching multiple transfers into single transactions for efficient gas usage. At the time of writing, a combination of 4MB chunk size and batching means a 150MB file is currently incurring $0.25 gas fee (noting while the quoted price here is currently indicative that it will be subject to Ethereum network fluctuations).
+Autonomi will launch with an ERC-20 network token, the Autonomi Network Token (ANT), utilizing smart contracts for token releases and batching multiple transfers into single transactions for efficient gas usage. At the time of writing, a combination of 4MB chunk size and batching means a 150MB file is currently incurring $0.25 gas fee (noting while the quoted price here is currently indicative that it will be subject to Ethereum network fluctuations).
 
 The decision to use a blockchain payment solution for the early launch phase of Autonomi (ahead of the network implementing its own Native Token) is, along with deployment time to market advantages, to assist in the network’s ability to scale. Ethereum (Autonomi is using a ‘roll-up chain’ - Arbitrum One, an ‘L2’ - see ‘[Glossary of Term](https://docs.autonomi.com/learn/learn-more/glossary)s’ for brief description on both), is a battle-tested blockchain with proven and respected security features.
 

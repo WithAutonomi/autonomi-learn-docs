@@ -8,7 +8,7 @@ metaLinks:
 
 ### ANT
 
-ANT or $ANT was the former exchange ticker for [Autonomi Tokens](glossary.md#autonomi-tokens-usdautonomi), now $AUTONOMI
+Common shorthand for [Autonomi Network Token (ANT)](glossary.md#autonomi-network-token-ant).
 
 ### ant
 
@@ -22,9 +22,9 @@ The local daemon used by the SDKs and language bindings. It is part of [`ant-sdk
 
 An autonomous data network built on the Autonomi Protocol that supports a rich application ecosystem to be created by developers and enjoyed by participants.
 
-### Autonomi Tokens ($AUTONOMI)
+### Autonomi Network Token (ANT)
 
-Short for is an ERC20 standard token that will be distributed (see ‘[Token Allocation](../how-it-works/network-economics/token-supply.md)’), as well as spent and earned by using and/or supporting the Autonomi Network. A ‘$’ sign maybe used in front of it to indicate that it is a cryptocurrency.
+The network's ERC-20 utility token on Arbitrum One. It is commonly known as ANT. On decentralized exchanges it trades as `$ANT`, while some centralized exchanges list it as `$AUTONOMI`. It is spent and earned by using and supporting the Autonomi Network.
 
 ### Autonomi Foundation
 

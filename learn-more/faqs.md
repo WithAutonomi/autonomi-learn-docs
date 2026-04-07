@@ -62,9 +62,9 @@ However its _payment system_ will utilise the Ethereum blockchain at launch, bef
 
 <summary>Can I buy Autonomi Tokens?</summary>
 
-Yes! You can either buy, or earn Autonomi tokens ($AUTONOMI) .\
+Yes. You can either buy or earn Autonomi Network Tokens. On decentralized exchanges the token trades as `$ANT`, while some centralized exchanges list it as `$AUTONOMI`.\
 \
-Have a read of our complete [guide to buying $AUTONOMI](https://app.gitbook.com/s/yZv1zkASl6hUNUmP3ypg/using-autonomi-tokens/buying) for all the details.
+Have a read of our complete [guide to buying Autonomi Network Tokens](https://app.gitbook.com/s/yZv1zkASl6hUNUmP3ypg/using-autonomi-tokens/buying) for all the details.
 
 </details>
 
