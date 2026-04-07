@@ -21,16 +21,4 @@ Note: The number of nodes in The Network is constrained by the availability of r
 
 Where `record_count` is the number of records currently stored by that node. Prices rise slowly when nodes are empty and accelerate sharply as they fill up. No external oracles, no governance votes — the price emerges from network state. Prices are verified through neighbourhood record count maintenance: nodes in a close group track what their neighbours hold and can detect inconsistent pricing claims.
 
-**NOTE: The charts below may need updating to reflect the v2 quadratic pricing curve.**
-
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
-
-<div align="left"><figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure></div>
-
-<figure><img src="../../.gitbook/assets/image (1).webp" alt=""><figcaption></figcaption></figure>
-
-As it can be seen from the charts above, the fair storage price will initially rise. The system must overcome this initial price resistance to benefit from the subsequent decline in price, driven by increasing data upload rates and decreasing raw resource costs. To address this **initial friction**, The Network will provide additional incentives to node operators during The Network's early stages - derived from an emission allocation.
-
-To do this The Autonomi Foundation will mint new Autonomi Network Tokens (ANT) and distribute them to the participating node operators.
-
 **Payment Optimisation:** For large uploads, Merkle Tree batch payments reduce on-chain cost from O(n) per chunk to O(1) per batch — a single Merkle root submission on Arbitrum covers an entire batch of chunks. This makes large-scale archiving economically practical. Every storage payment burns 1% of the ANT spent, creating deflationary pressure proportional to network usage.
