@@ -28,9 +28,9 @@ The network's ERC-20 utility token on Arbitrum One. It is commonly known as ANT.
 
 ### Autonomi Foundation
 
-Often referred to just as _the Foundation._ A Swiss non-profit that facilitates, supports, funds and promotes the research and development of the Protocol, as well as enables the ongoing delivery, maintenance and adoption of the Network and its technologies. Formerly known as the Safe Network Foundation.&#x20;
+Often referred to just as _the Foundation._ A Swiss non-profit that facilitates, supports, funds and promotes the research and development of the Protocol, as well as enables the ongoing delivery, maintenance and adoption of the Network and its technologies. Formerly known as the Safe Network Foundation.
 
-### Autonomi Protocol&#x20;
+### Autonomi Protocol
 
 Often referred to just as _the_ _Protocol_. A collection of open source algorithms, libraries and components that allows computers to form an autonomous data network
 
@@ -42,11 +42,11 @@ A layer-2 scaling solution for Ethereum, enhancing speed and reducing costs for 
 
 Not time-dependent. A system that supports asynchronicity should come to consensus no matter what order the various messages arrive in.
 
-### Boneh-Lynn-Shacham Distributed Key Generation (BLS-DKG)&#x20;
+### Boneh-Lynn-Shacham Distributed Key Generation (BLS-DKG)
 
 A cryptographic system that authenticates the sender of a message, allows for multiple parties to quickly come to a consensus, and can enable multi-signature transactions and n-of-k credentials
 
-### Byzantine Fault Tolerance&#x20;
+### Byzantine Fault Tolerance
 
 The ability of a decentralized network to function properly even if up to a third of the nodes (plus 1) is corrupt or faulty
 
@@ -54,7 +54,7 @@ The ability of a decentralized network to function properly even if up to a thir
 
 Encrypted digital ‘cheque’ for a given value containing all the necessary information for the owner of the associated secret key to spend that value.
 
-### Churn&#x20;
+### Churn
 
 Nodes joining and leaving the Network
 
@@ -68,7 +68,7 @@ Software that allows users to connect to the Network and make use of its service
 
 ### Close Group
 
-A Close Group is a small number of nodes that look after a specific piece of data, and that only exist as a group for that specific data. \
+A Close Group is a small number of nodes that look after a specific piece of data, and that only exist as a group for that specific data.\
 \
 This system of close groups allows nodes to act independently, but together to form a strong autonomous global network, capable of storing and retaining data in perpetuity.
 
@@ -131,11 +131,7 @@ The set of techniques that help devices behind routers and firewalls connect to 
 
 ### [Node](../how-it-works/fully-autonomous-data-network/nodes.md)
 
-A machine that connects with others using Autonomi's Protocol to form the Network.&#x20;
-
-### Node Network Reserve
-
-18% of data payments (up to 10% of maximum supply) are sent to this allocation for node operators. This allocation is used to support payments to nodes should network upload values experience volatility. If the Node Network Reserve holds 10% of the network’s Maximum Supply of tokens, the allocation from data payments reduces from 18% to 2%.
+A machine that connects with others using Autonomi's Protocol to form the Network.
 
 ### PeerId
 
@@ -161,7 +157,7 @@ Allows a program to execute code or perform operations on a remote system as if 
 
 A modern transport protocol built on UDP. Autonomi uses it for secure peer connections and NAT traversal coordination.
 
-### Resource Supply Rewards&#x20;
+### Resource Supply Rewards
 
 Payment to the operators of resource-providing nodes in return for storing data. Also referred to as Data Payments.
 
@@ -173,7 +169,7 @@ The shared transport layer used by Autonomi and [x0x](https://github.com/saorsa-
 
 The former name for Autonomi
 
-### [Self-Encryption](../how-it-works/encryption-and-authentication/self-encryption.md)&#x20;
+### [Self-Encryption](../how-it-works/encryption-and-authentication/self-encryption.md)
 
 The client-side process that breaks uploaded content into encrypted chunks and creates the Data Map needed to reconstruct it later. It uses BLAKE3 for chunk hashing and ChaCha20-Poly1305 for authenticated encryption.
 
