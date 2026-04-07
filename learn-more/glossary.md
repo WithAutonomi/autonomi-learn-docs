@@ -135,7 +135,7 @@ A machine that connects with others using Autonomi's Protocol to form the Networ
 
 ### Node Network Reserve
 
-18% of data payments (up to 10% of maximum supply) are sent to this allocation for node operators. This allocation will be used to support payments to nodes should the network upload values experience volatility. If the Node Network Reserve holds 10% of the network’s Maximum Supply of tokens, 18% payment reduces to 2%, with the 2% payment burned (removed from Maximum Supply).
+18% of data payments (up to 10% of maximum supply) are sent to this allocation for node operators. This allocation is used to support payments to nodes should network upload values experience volatility. If the Node Network Reserve holds 10% of the network’s Maximum Supply of tokens, the allocation from data payments reduces from 18% to 2%.
 
 ### PeerId
 

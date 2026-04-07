@@ -7,16 +7,25 @@ metaLinks:
 
 # Quote Calculations
 
-The pricing within The Network is determined by a supply-and-demand mechanism. Each node assesses its internal resource availability to calculate the price it needs to charge. Specifically, a node compares the number of records it is responsible for storing against the maximum capacity of records a node is allowed to hold.
+Autonomi does not use a flat storage price. Instead, each node quotes a price based on how full it already is.
 
-Because The Network uniformly distributes the addresses of both nodes and records, the number of records assigned to each node accurately reflects the ratio between the total number of nodes (indicating storage space supply) and the total number of records (indicating storage space demand).
+Autonomi Network Tokens (ANT) are used to pay for storage on Arbitrum One. The quote a node returns is based on how many records it is already storing, which gives the network a simple supply-and-demand signal without needing external oracles or manual price setting.
 
-Autonomi Network Tokens (ANT) — an ERC-20 token on the Arbitrum One network — serve as the network’s currency. Payments are made on-chain via Arbitrum. As a result, the effective payment amount in ‘FIAT’ terms depends on the ANT token’s market value, which will be inherently volatile. To address this, prices are normalized by the token price, ensuring that The Network's size and functionality are governed by the true supply and demand for storage space, rather than fluctuations in market conditions.
+## Pricing Formula
 
-Note: The number of nodes in The Network is constrained by the availability of raw resources such as disk space, bandwidth, and CPU power. Consequently, the node count alone should not be used to infer the total network capacity, as this would incorrectly assume that disk space is the sole limiting factor.
+Storage pricing follows a calibrated quadratic curve based on node fullness:
 
-**The v2 pricing formula is a quadratic function of node fullness:**
+```text
+price_per_chunk_ANT(n) = 0.00390625 + 0.03515625 × (n / 6000)^2
+```
 
-**Price = (record\_count / 6000)² ANT per chunk**
+Here, `n` is the number of records currently stored by that node. The non-zero baseline provides a spam barrier even when nodes are empty, and the quadratic term increases pricing as nodes fill up, pushing new uploads toward less-loaded parts of the network.
 
-Where `record_count` is the number of records currently stored by that node. Prices rise slowly when nodes are empty and accelerate sharply as they fill up. No external oracles, no governance votes — the price emerges from network state. Prices are verified through neighbourhood record count maintenance: nodes in a close group track what their neighbours hold and can detect inconsistent pricing claims.
+## Example Points
+
+- `n = 0`: `0.00390625 ANT` (baseline only)
+- `n = 6000`: `0.0390625 ANT`
+- `n = 12000`: `~0.1445 ANT`
+- `n = 24000`: `~0.566 ANT`
+
+These points show how the baseline keeps pricing non-zero when nodes are empty, while the quadratic term makes prices rise much faster as nodes become more full.
