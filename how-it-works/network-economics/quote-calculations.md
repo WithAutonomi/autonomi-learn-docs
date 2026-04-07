@@ -20,5 +20,3 @@ Note: The number of nodes in The Network is constrained by the availability of r
 **Price = (record\_count / 6000)² ANT per chunk**
 
 Where `record_count` is the number of records currently stored by that node. Prices rise slowly when nodes are empty and accelerate sharply as they fill up. No external oracles, no governance votes — the price emerges from network state. Prices are verified through neighbourhood record count maintenance: nodes in a close group track what their neighbours hold and can detect inconsistent pricing claims.
-
-**Payment Optimisation:** For large uploads, Merkle Tree batch payments reduce on-chain cost from O(n) per chunk to O(1) per batch — a single Merkle root submission on Arbitrum covers an entire batch of chunks. This makes large-scale archiving economically practical. Every storage payment burns 1% of the ANT spent, creating deflationary pressure proportional to network usage.
