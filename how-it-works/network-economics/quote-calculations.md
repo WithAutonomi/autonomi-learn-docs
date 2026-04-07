@@ -7,15 +7,13 @@ metaLinks:
 
 # Quote Calculations
 
-Autonomi does not use a flat storage price. Instead, each node quotes a price based on how full it already is.
-
-Autonomi Network Tokens (ANT) are used to pay for storage on Arbitrum One. The quote a node returns is based on how many records it is already storing, which gives the network a simple supply-and-demand signal without needing external oracles or manual price setting.
+Autonomi does not use a flat storage price. Instead, each node quotes a price based on how full it already is. The quote a node returns is based on how many records it is already storing, which gives the network a simple supply-and-demand signal without needing external oracles or manual price setting.
 
 ## Pricing Formula
 
 Storage pricing follows a calibrated quadratic curve based on node fullness:
 
-```text
+```
 price_per_chunk_ANT(n) = 0.00390625 + 0.03515625 × (n / 6000)^2
 ```
 
@@ -23,9 +21,9 @@ Here, `n` is the number of records currently stored by that node. The non-zero b
 
 ## Example Points
 
-- `n = 0`: `0.00390625 ANT` (baseline only)
-- `n = 6000`: `0.0390625 ANT`
-- `n = 12000`: `~0.1445 ANT`
-- `n = 24000`: `~0.566 ANT`
+* `n = 0`: `0.00390625 ANT` (baseline only)
+* `n = 6000`: `0.0390625 ANT`
+* `n = 12000`: `~0.1445 ANT`
+* `n = 24000`: `~0.566 ANT`
 
 These points show how the baseline keeps pricing non-zero when nodes are empty, while the quadratic term makes prices rise much faster as nodes become more full.
