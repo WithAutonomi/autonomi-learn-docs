@@ -10,6 +10,14 @@ metaLinks:
 
 ANT or $ANT was the former exchange ticker for [Autonomi Tokens](glossary.md#autonomi-tokens-usdautonomi), now $AUTONOMI
 
+### ant
+
+The command-line interface (CLI) for direct interaction with the network. It is part of [`ant-client`](https://github.com/WithAutonomi/ant-client).
+
+### antd
+
+The local daemon used by the SDKs and language bindings. It is part of [`ant-sdk`](https://github.com/WithAutonomi/ant-sdk).
+
 ### Autonomi
 
 An autonomous data network built on the Autonomi Protocol that supports a rich application ecosystem to be created by developers and enjoyed by participants.
@@ -64,7 +72,7 @@ A Close Group is a small number of nodes that look after a specific piece of dat
 \
 This system of close groups allows nodes to act independently, but together to form a strong autonomous global network, capable of storing and retaining data in perpetuity.
 
-### [Conflict-free Data Types (CRDTs)](../how-it-works/consensus-not-required/conflict-free-replicated-data-types.md)
+### Conflict-free Data Types (CRDTs)
 
 Data structures that obey certain mathematical rules which ensure that when multiple versions of data exist across a distributed network, eventually these will always converge onto one ‘true’ version
 
@@ -88,10 +96,6 @@ FIAT currency is money declared by a government to be legal tender, not backed b
 
 Detecting nodes that are acting suspiciously and removing them from the routing table.
 
-### GossipSub
-
-A [libp2p](../how-it-works/network-architecture/libp2p.md) publish/subscribe system whereby peers congregate around topics they are interested in by subscribing to them.
-
 ### [Kademlia](../how-it-works/network-architecture/building-on-kademlia.md)
 
 A distributed hash table (DHT) protocol which provides a way for millions of computers to self-organize into a network.
@@ -100,30 +104,30 @@ A distributed hash table (DHT) protocol which provides a way for millions of com
 
 A scaling solutions built on top of a blockchain (Layer 1) to increase transaction speed and reduce costs.
 
-### [libp2p](glossary.md#libp2p)
-
-A Kademlia-based open source peer-to-peer networking framework.
-
 ### MaidSafeCoin
 
-A cryptocurrency token, created during a crowd-sale (or ICO) in April 2014, that will be [exchangeable, on a 1:1 basis for Autonomi's native token once the Network is live](/broken/pages/3sdVfuUx4Abcff5RgaqL#maidsafecoin-holders).\
+A cryptocurrency token created during a crowd-sale in April 2014 that supported the development of Autonomi.\
 There are both Omni (MAID) and ERC-20 (EMAID) variants of MaidSafeCoin.
 
 ### Maximum Supply
 
 Total number of whole Autonomi Network Tokens created over the Network’s lifetime: 1,200,000,000 (1.2 Billion) tokens.
 
+### MASQUE relay
+
+A relay path used as a last resort when direct connection and hole punching cannot connect two peers.
+
 ### Multiaddress
 
 A unique locator for a peer that encodes multiple networking protocols into a single address
 
-### Multimap
-
-A mutable [CRDT](../how-it-works/consensus-not-required/conflict-free-replicated-data-types.md) data type for mapping keys to multiple values.
-
 ### Native Token
 
 A non-blockchain token running on Autonomi to be introduced after the early phase/launch of The Network.
+
+### NAT traversal
+
+The set of techniques that help devices behind routers and firewalls connect to each other without manual port forwarding.
 
 ### [Node](../how-it-works/fully-autonomous-data-network/nodes.md)
 
@@ -132,6 +136,10 @@ A machine that connects with others using Autonomi's Protocol to form the Networ
 ### Node Network Reserve
 
 18% of data payments (up to 10% of maximum supply) are sent to this allocation for node operators. This allocation will be used to support payments to nodes should the network upload values experience volatility. If the Node Network Reserve holds 10% of the network’s Maximum Supply of tokens, 18% payment reduces to 2%, with the 2% payment burned (removed from Maximum Supply).
+
+### PeerId
+
+The node's network identifier. Other nodes use it to recognize a node and measure how close it is to other peers and data in the network.
 
 ### Proof-of-Resource
 
@@ -145,17 +153,21 @@ The consensus algorithm used by the Bitcoin blockchain and others to confirm tha
 
 The consensus algorithm used by the Etherum blockchain and others in which voting power is proportional to wealth.
 
-### [Register](../how-it-works/data-types/graphentry.md)
-
-A mutable CRDT data type.
-
 ### RPC (Remote Procedure Call) endpoint
 
 Allows a program to execute code or perform operations on a remote system as if it were a local function call. RPC is designed to hide the details of the network communication from the programmer. You call a function as if it's local, but it's executed remotely.
 
+### QUIC
+
+A modern transport protocol built on UDP. Autonomi uses it for secure peer connections and NAT traversal coordination.
+
 ### Resource Supply Rewards&#x20;
 
 Payment to the operators of resource-providing nodes in return for storing data. Also referred to as Data Payments.
+
+### saorsa-transport
+
+The shared transport layer used by Autonomi and [x0x](https://github.com/saorsa-labs/x0x) for peer connections, NAT traversal, and relay fallback. The source repo is [`saorsa-transport`](https://github.com/saorsa-labs/saorsa-transport).
 
 ### Safe Network
 
@@ -163,7 +175,7 @@ The former name for Autonomi
 
 ### [Self-Encryption](../how-it-works/encryption-and-authentication/self-encryption.md)&#x20;
 
-Content uploaded to the Autonomi is broken up into chunks. These chunks are then hashed, encrypted locally using the AES-256 encryption algorithm and the hashes of neighbouring chunks. Because content is encrypted and decrypted locally, there is no need for keys to leave the user’s machine.
+The client-side process that breaks uploaded content into encrypted chunks and creates the Data Map needed to reconstruct it later. It uses BLAKE3 for chunk hashing and ChaCha20-Poly1305 for authenticated encryption.
 
 ### Spend
 
@@ -196,5 +208,9 @@ A monetary transaction on the Network.
 ### XOR address
 
 A unique 256-bit number; every entity on the Network has an XOR address
+
+### x0x
+
+A complementary layer for realtime, mutable, or collaborative behavior. Autonomi stores permanent, immutable data; [`x0x`](https://github.com/saorsa-labs/x0x) handles live interaction and shared state.
 
 <br>
