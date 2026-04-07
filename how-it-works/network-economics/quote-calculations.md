@@ -29,13 +29,3 @@ Here, `n` is the number of records currently stored by that node. The non-zero b
 - `n = 24000`: `~0.566 ANT`
 
 These points show how the baseline keeps pricing non-zero when nodes are empty, while the quadratic term makes prices rise much faster as nodes become more full.
-
-## Payment Optimization
-
-For larger uploads, Merkle tree batch payments reduce on-chain cost from `O(n)` per chunk to `O(1)` per batch. A single Merkle root submission on Arbitrum can cover an entire batch of chunks, which keeps large uploads more practical by reducing transaction overhead.
-
-## Early-Stage Incentives
-
-The network also includes early-stage incentives for node operators, funded through an emission allocation. The goal is to support participation while the network is still growing and the storage market is still finding its footing.
-
-The Autonomi Foundation can mint new Autonomi Network Tokens (ANT) from that allocation and distribute them to participating node operators.
