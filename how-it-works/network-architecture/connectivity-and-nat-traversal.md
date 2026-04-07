@@ -1,29 +1,47 @@
 # Connectivity and NAT Traversal
 
-Autonomi 2.0 uses a QUIC-based connectivity layer to let nodes discover each other, establish encrypted peer-to-peer connections, and stay reachable across home routers and business firewalls. This layer is shared by both the Autonomi storage network and x0x.
+Autonomi is designed so ordinary devices can join the network from home or office internet connections, even when they sit behind routers and firewalls. To make that work, the network needs a reliable way to discover peers, establish secure connections, and stay reachable without asking most people to configure ports manually.
 
-It handles connection setup, address discovery, and NAT traversal. Routing, DHT lookups, and close-group behaviour sit above it in saorsa-core.
+## Why this matters
 
-#### Why this matters
+Many decentralized networks work best on publicly reachable servers or require manual setup. Autonomi is designed so most nodes can connect from ordinary internet connections instead.
 
-Getting peers behind home routers and business firewalls to talk to each other has always been one of the hardest parts of decentralised networking. Autonomi is designed so ordinary devices can participate without port forwarding or manual network setup.
+For you, that means:
 
-#### How connections are made
+1. Most nodes can run without manual port forwarding.
+2. The network first tries to connect peers directly.
+3. If that does not work, it tries hole punching, then falls back to a relay.
 
-All connections use QUIC, a modern transport protocol built on UDP. QUIC gives the network low-latency connection setup, multiplexed streams, and built-in TLS 1.3 encryption. On top of that, Autonomi uses native QUIC extension frames for address discovery and NAT traversal.
+## How peers connect
 
-There's a three-step connectivity strategy:
+Autonomi uses [QUIC](../../learn-more/glossary.md#quic), a modern transport protocol built on UDP, as the basis for peer connections. QUIC allows fast connection setup, multiple data streams over one connection, and built-in TLS 1.3 encryption.
 
-1. **Direct connection** — nodes connect directly where possible
-2. **Hole punching** — coordinated NAT traversal for nodes behind firewalls
-3. **MASQUE relay** — for the most restrictive environments, traffic is relayed as a last resort
+To get peers talking across routers and firewalls, the network uses [NAT traversal](../../learn-more/glossary.md#nat-traversal). In practice, that means a three-step strategy:
 
-This means most nodes can run from everyday internet connections without port forwarding. When direct connectivity is not possible, relay fallback keeps the network reachable.
+1. **Direct connection** — peers connect directly where possible.
+2. **Hole punching** — the network coordinates a connection between peers behind NAT.
+3. **[MASQUE relay](../../learn-more/glossary.md#masque-relay)** — if direct connection and hole punching both fail, traffic is relayed as a last resort.
 
-#### Post-Quantum Security
+This keeps the network reachable in restrictive environments while keeping direct peer-to-peer connections as the default.
 
-Every connection is secured with post-quantum cryptography from the very first byte. The TLS 1.3 handshake uses NIST-standardised algorithms — ML-KEM-768 for key exchange, ML-DSA-65 for signing. There is no classical fallback. The connection is quantum-resistant before any application data is exchanged.
+## Connection security
 
-#### Peer Identity
+Every connection uses post-quantum cryptography from the first byte, so peers can establish secure connections without falling back to classical public-key cryptography.
 
-Each node's identity is a post-quantum key pair (ML-DSA-65). Its network address (PeerId) is the BLAKE3 hash of its public key — deterministic, verifiable, and quantum-resistant. On joining or rejoining the Network a node cannot simply pick its own XOR address; it is determined by its cryptographic identity.
+## Peer identity
+
+Each node has a [PeerId](../../learn-more/glossary.md#peerid), the network identifier other nodes use to recognize it. That identifier is derived from the node's cryptographic identity, so a node cannot choose its own position in the network arbitrarily.
+
+This helps the network identify peers consistently, coordinate connections, and measure which nodes are closest to each other and to a given piece of data.
+
+## Under the hood
+
+The shared transport layer is [`saorsa-transport`](../../learn-more/glossary.md#saorsa-transport). It handles connection setup, address discovery, NAT traversal, and relay fallback. The same transport is also used by [x0x](../../learn-more/glossary.md#x0x), though Autonomi and x0x use it for different higher-level purposes.
+
+Autonomi's transport layer uses `ML-KEM-768` for key exchange and `ML-DSA-65` for signatures, with no classical fallback. Each `PeerId` is the `BLAKE3` hash of the node's `ML-DSA-65` public key.
+
+## Related pages
+
+- [Nodes](../fully-autonomous-data-network/nodes.md)
+- [Post-Quantum Identity & Credentials](../encryption-and-authentication/multisig-credentials.md)
+- [Glossary](../../learn-more/glossary.md)
